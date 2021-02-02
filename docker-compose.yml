@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  SERVER:
+    image: node:15.5.0-alpine3.10
+    container_name: 'node-server_cli'
+    restart: always
+    ports:
+      - 3000:3000
+    working_dir: /serverDir
+    volumes:
+       - ./server:/serverDir
+       - ./client:/clientDir
+    command: sh -c 'npm install && node app.js'
+    environment:
+      - TZ=America/Sao_Paulo
